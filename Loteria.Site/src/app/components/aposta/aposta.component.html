@@ -1,0 +1,42 @@
+<div class="logo">
+  <img src="assets/images/logo.jpg" width="60" alt="logo">
+  <h1>Mega-sena</h1>
+</div>
+<div class="inputs">
+  <input type="number" min="1" max="60" [(ngModel)]="dezenas[0]" />
+  <input type="number" min="1" max="60" [(ngModel)]="dezenas[1]" />
+  <input type="number" min="1" max="60" [(ngModel)]="dezenas[2]" />
+  <input type="number" min="1" max="60" [(ngModel)]="dezenas[3]" />
+  <input type="number" min="1" max="60" [(ngModel)]="dezenas[4]" />
+  <input type="number" min="1" max="60" [(ngModel)]="dezenas[5]" />
+</div>
+<div class="buttons">
+  <button name="gerar-aposta" (click)="inserirAposta()" type="submit" id="gerar-aposta">
+    Inserir Aposta
+  </button>
+
+  <button name="gerar-dezenas" (click)="gerarDezenas()" type="submit" id="gerar-dezenas">
+  Gerar Dezenas
+  </button>
+</div>
+
+<div class="tabela">
+  <table>
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Números</th>
+        <th>Data</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let aposta of apostas">
+            <td>{{aposta.id}}</td>
+            <td>{{aposta.numero}}</td>
+            <td>{{aposta.data | date:"dd/MM/yyyy hh:mm"}}</td>
+        </tr>
+    </tbody>
+  </table>
+</div>
+
+
