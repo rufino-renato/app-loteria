@@ -1,6 +1,8 @@
 import { Router } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { Component } from '@angular/core';
+import {  Compiler } from '@angular/core';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -11,6 +13,9 @@ export class AppComponent {
   initialPage = HomeComponent;
 
   constructor(
-    private router: Router
-  ) { }
+    private router: Router, private compiler: Compiler
+  ) 
+  {
+    this.compiler.clearCache();
+   }
 }

@@ -17,7 +17,7 @@ export class SorteioComponent implements OnInit {
   ngOnInit() {
   }
 
-  sortear(){
+  inserirSorteio(){
     this.sorteioService.inserirSorteio().then(s => {
       this.sorteio = s;
       swal("Sorteio efetuado! Verifique os números sorteados e os ganhadores.");
