@@ -5,6 +5,7 @@ using Loteria.Core.Service;
 using Loteria.Core.Service.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -30,6 +31,8 @@ namespace Loteria.WebApi
             services.AddScoped<ISorteioRepository, SorteioRepository>();
             services.AddScoped<IApostaRepository, ApostaRepository>();
 
+            services.AddCors();
+
             services.AddMvc();
         }
 
@@ -41,7 +44,34 @@ namespace Loteria.WebApi
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseMvc();
+            app.UseCors(builder =>
+                builder.AllowAnyHeader()
+                    .AllowAnyMethod()
+                    .AllowAnyOrigin()
+            );
+
+            app.UseStaticFiles();
+
+            app.UseMvcWithDefaultRoute();
+
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(
+                    name: "DefaultApi",
+                    template: "loteria/api/v1/{controller}/{action}/{id?}"
+                );
+                routes.MapRoute(
+                    name: "Api",
+                    template: "loteria/api/v1/{controller}/{id?}"
+                );
+            });
+
+            app.UseStatusCodePages(async context =>
+            {
+                context.HttpContext.Response.ContentType = "text/plain";
+
+                await context.HttpContext.Response.WriteAsync("Status code page, status code: " + context.HttpContext.Response.StatusCode);
+            });
         }
     }
 }
