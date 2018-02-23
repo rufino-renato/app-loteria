@@ -1,0 +1,58 @@
+<div class="row">
+  <div class="col-md-12">
+      <div class="form-inline">
+          <div class="row">
+            <div class="col-md-10">
+              <div class="row">
+                <div class="col-md-2"><input id="dezena-1" type="number" class="form-control" [(ngModel)]="aposta.dezenas[0]" min="1" max="60"></div>
+                <div class="col-md-2"><input id="dezena-2" type="number" class="form-control" [(ngModel)]="aposta.dezenas[1]" min="1" max="60"></div>
+                <div class="col-md-2"><input id="dezena-3" type="number" class="form-control" [(ngModel)]="aposta.dezenas[2]" min="1" max="60"></div>
+                <div class="col-md-2"><input id="dezena-4" type="number" class="form-control" [(ngModel)]="aposta.dezenas[3]" min="1" max="60"></div>
+                <div class="col-md-2"><input id="dezena-5" type="number" class="form-control" [(ngModel)]="aposta.dezenas[4]" min="1" max="60"></div>
+                <div class="col-md-2"><input id="dezena-6" type="number" class="form-control" [(ngModel)]="aposta.dezenas[5]" min="1" max="60"></div>
+              </div>
+            </div>
+            <div class="col-md-2">
+              <div class="row">
+                  <div class="col-md-12">
+                    <button id="gerar-dezenas" type="submit" (click)="gerarDezenas()" class="btn btn-primary">
+                      Criar aposta
+                    </button>
+                  </div>    
+              </div>
+            </div>
+          </div>
+        </div>
+        <br/>
+        <div class="form-group">
+            <div class="row">
+              <div class="col-md-12">
+                  <button id="gerar-aposta" type="submit" (click)="inserirAposta()" class="btn btn-success">
+                      Nova aposta
+                  </button>    
+              </div>
+            </div>  
+        </div>
+        <h2>Minhas apostas</h2>
+        <div>
+            <table class="table table-fixed">
+              <thead class="thead-dark">
+                <tr>
+                  <th class="col-md-2" scope="col">Aposta</th>
+                  <th class="col-md-6" scope="col">Dezenas</th>
+                  <th class="col-md-4" scope="col">Data</th>
+                </tr>
+              </thead>
+              <tbody>
+                  <tr scope="row" *ngFor="let item of apostas">
+                      <td class="col-md-2">{{item.id}}</td>
+                      <td class="col-md-6">{{item.dezenas}}</td>
+                      <td class="col-md-4">{{item.dataAposta | date:"dd/MM/yyyy hh:mm"}}</td>
+                  </tr>
+              </tbody>
+            </table>
+        </div>
+  </div>
+
+</div>
+

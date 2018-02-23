@@ -1,6 +1,6 @@
 export class ApostaModel{
-    Id : number;
-    Dezenas : number[];
-    DataAposta : Date;
-    TipoContemplacao: number;
+    id : number;
+    dezenas : number[];
+    dataAposta : Date;
+    tipoContemplacao: number;
 }

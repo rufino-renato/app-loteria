@@ -44,22 +44,25 @@ namespace Loteria.Core.Service
 
             foreach (var aposta in apostas)
             {
-                var acertos = aposta.Dezenas.Intersect(dezenas).Count();
-
-                switch (acertos)
+                if (aposta.Dezenas != null)
                 {
-                    case 4:
-                        aposta.TipoContemplacao = TipoContemplacao.Quadra;
-                        apostasVencedoras.Add(aposta);
-                        break;
-                    case 5:
-                        aposta.TipoContemplacao = TipoContemplacao.Quina;
-                        apostasVencedoras.Add(aposta);
-                        break;
-                    case 6:
-                        aposta.TipoContemplacao = TipoContemplacao.Sena;
-                        apostasVencedoras.Add(aposta);
-                        break;
+                    var acertos = aposta.Dezenas.Intersect(dezenas).Count();
+
+                    switch (acertos)
+                    {
+                        case 4:
+                            aposta.TipoContemplacao = TipoContemplacao.Quadra;
+                            apostasVencedoras.Add(aposta);
+                            break;
+                        case 5:
+                            aposta.TipoContemplacao = TipoContemplacao.Quina;
+                            apostasVencedoras.Add(aposta);
+                            break;
+                        case 6:
+                            aposta.TipoContemplacao = TipoContemplacao.Sena;
+                            apostasVencedoras.Add(aposta);
+                            break;
+                    }
                 }
             }
 

@@ -1,4 +1,16 @@
-h1 {
-    font-size: 30px;
-    font-weight: 600;
-}
+@import "../assets/css/bootstrap.min.css";
+
+
+.table-fixed tbody {
+    height: 200px;
+    overflow-y: auto;
+    width: 100%;
+  }
+  .table-fixed thead, .table-fixed tbody, .table-fixed tr, .table-fixed td, .table-fixed th {
+    display: block;
+  }
+  .table-fixed tbody td, .table-fixed thead > tr> th {
+    float: left;
+    border-bottom-width: 0;
+  }
+  

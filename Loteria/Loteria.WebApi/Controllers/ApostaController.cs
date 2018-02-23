@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Loteria.Application.Model;
 using Loteria.Core.Service.Interfaces;
@@ -22,6 +23,7 @@ namespace Loteria.WebApi.Controllers
             return _apostaService.GetAll().ToList();
         }
 
+        [HttpGet("gerardezenas")]
         public ApostaViewModel GerarDezenas()
         {
             var aposta = new ApostaViewModel

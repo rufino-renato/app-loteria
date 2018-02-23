@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Loteria.Shared
 {
@@ -23,8 +24,8 @@ namespace Loteria.Shared
                 dic.Add(i, dezena);
                 dezenas[i] = dezena;
             }
-
-            return dezenas;
+            
+            return dezenas.OrderBy(o => o).ToArray();
         }
     }
 }
